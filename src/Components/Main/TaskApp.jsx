@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import style from '../Main/Task.module.css'
+import style from './Task.module.css'
 
-import { FaTrash} from 'react-icons/fa'
+
+import { FaTrash,  FaHeart } from 'react-icons/fa'
 
 
 
@@ -43,9 +44,10 @@ function TaskApp() {
 
   return (
     <>
+
       <div className={style.AppMain}>
         <h1>Lista de Tarefas</h1>
-        <input
+        <input className={style.inputItem}
           type="text"
           placeholder="tarefa"
           value={item}
@@ -53,6 +55,11 @@ function TaskApp() {
           onChange={(e) => setItem(e.target.value)}
         /><br />
         <button onClick={addItem}>Adicionar tarefa</button>
+       
+        <div className={style.containerButton}>
+          <button className={style.btnPage} onClick={() => setCurrentPage("ativos")}>Tarefas Ativas</button>
+          <button className={style.btnPage} onClick={() => setCurrentPage("concluídos")}>Tarefas Concluídas</button>
+        </div>
         <ul>
           {filteredTasks.map((item) => (
             <li key={item.text} className={style.listItem}>
@@ -75,10 +82,6 @@ function TaskApp() {
             </li>
           ))}
         </ul>
-        <div>
-          <button onClick={() => setCurrentPage("ativos")}>Tarefas Ativas</button>
-          <button onClick={() => setCurrentPage("concluídos")}>Tarefas Concluídas</button>
-        </div>
       </div>
     </>
   );

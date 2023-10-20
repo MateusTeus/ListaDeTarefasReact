@@ -9,6 +9,6 @@ function Header() {
               <span>Paula Cristina <span><FaHeart/></span></span>
         </header>
     )    
-}
+}//
 
 export default Header
